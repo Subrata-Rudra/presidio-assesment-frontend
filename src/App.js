@@ -5,17 +5,20 @@ import { useEffect } from "react";
 import axios from "axios";
 
 function App() {
-  useEffect(async () => {
-    try {
-      const url = process.env.REACT_APP_SERVER_URL + "/test";
-      const response = await axios.get(url);
-      if (response.status === 200) {
-        console.log("Server is ready🎉");
+  useEffect(() => {
+    async function awakenServer() {
+      try {
+        const url = process.env.REACT_APP_SERVER_URL + "/test";
+        const response = await axios.get(url);
+        if (response.status === 200) {
+          console.log("Server is ready🎉");
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
     }
-  });
+    awakenServer();
+  }, []);
   return (
     <div className="App">
       <Routes>
