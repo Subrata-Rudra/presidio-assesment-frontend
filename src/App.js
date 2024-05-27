@@ -10,7 +10,7 @@ function App() {
       const url = process.env.REACT_APP_SERVER_URL + "/test";
       const response = await axios.get(url);
       if (response.status === 200) {
-        alert("Server is ready🎉");
+        console.log("Server is ready🎉");
       }
     } catch (error) {
       console.error(error);
